@@ -1,5 +1,6 @@
 // models/Event.js
-import { mongoose } from '../db.js';
+import mongoose from 'mongoose'; // ✅ correct
+
 
 const eventSchema = new mongoose.Schema({
   title: {

@@ -1,5 +1,6 @@
 // models/User.js
-import { mongoose } from '../db.js';
+import mongoose from 'mongoose'; // ✅ correct
+
 
 const userSchema = new mongoose.Schema({
   email: String,

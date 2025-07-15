@@ -7,6 +7,11 @@ import Events from './pages/Events';
 import Admin from './pages/Admin';
 import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';
+import CreateEvent from './pages/CreateEvent';
+import ContactUs from './pages/ContactUs';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import FAQ from'./pages/FAQ';
+import TermsOfService from './pages/TermsOfService';
 
 
 const App = () => (
@@ -20,6 +25,11 @@ const App = () => (
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/createevent" element={<CreateEvent />} />
+        <Route path="/contact" element={<ContactUs />} />\
+        <Route path="/faq" element={<FAQ />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<TermsOfService />} />
         <Route path="/" element={
           (() => {
             try {

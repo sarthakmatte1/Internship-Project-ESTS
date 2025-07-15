@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import API from '../api';
 
 const Home = () => {
   const [events, setEvents] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -21,32 +22,32 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
       {/* Navigation Bar */}
-<nav className="bg-gray-900 px-6 py-4 shadow-lg">
-  <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
-    <div className="flex items-center space-x-2 mb-4 md:mb-0">
-      <i className="fas fa-ticket-alt text-blue-400 text-2xl"></i>
-      <h1 className="text-2xl font-bold text-white">Event<span className="text-blue-400">Pro</span></h1>
-    </div>
-    
-    <div className="flex flex-wrap justify-center gap-4 md:gap-6">
-      <Link to="/" className="text-gray-300 hover:text-white font-medium transition-colors duration-200 flex items-center">
-        <i className="fas fa-home mr-2"></i> Home
-      </Link>
-      <Link to="/dashboard" className="text-gray-300 hover:text-white font-medium transition-colors duration-200 flex items-center">
-        <i className="fas fa-chart-line mr-2"></i> Dashboard
-      </Link>
-      <Link to="/events" className="text-gray-300 hover:text-white font-medium transition-colors duration-200 flex items-center">
-        <i className="fas fa-calendar-alt mr-2"></i> Events
-      </Link>
-      <Link to="/register" className="text-gray-300 hover:text-white font-medium transition-colors duration-200 flex items-center">
-        <i className="fas fa-user-plus mr-2"></i> Register
-      </Link>
-      <Link to="/login" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium transition-colors duration-200 flex items-center">
-        <i className="fas fa-sign-in-alt mr-2"></i> Login
-      </Link>
-    </div>
-  </div>
-</nav>
+      <nav className="bg-gray-900 px-6 py-4 shadow-lg">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+          <div className="flex items-center space-x-2 mb-4 md:mb-0">
+            <i className="fas fa-ticket-alt text-blue-400 text-2xl"></i>
+            <h1 className="text-2xl font-bold text-white">Event<span className="text-blue-400">Pro</span></h1>
+          </div>
+          
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6">
+            <Link to="/" className="text-gray-300 hover:text-white font-medium transition-colors duration-200 flex items-center">
+              <i className="fas fa-home mr-2"></i> Home
+            </Link>
+            <Link to="/dashboard" className="text-gray-300 hover:text-white font-medium transition-colors duration-200 flex items-center">
+              <i className="fas fa-chart-line mr-2"></i> Dashboard
+            </Link>
+            <Link to="/events" className="text-gray-300 hover:text-white font-medium transition-colors duration-200 flex items-center">
+              <i className="fas fa-calendar-alt mr-2"></i> Events
+            </Link>
+            <Link to="/register" className="text-gray-300 hover:text-white font-medium transition-colors duration-200 flex items-center">
+              <i className="fas fa-user-plus mr-2"></i> Register
+            </Link>
+            <Link to="/login" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium transition-colors duration-200 flex items-center">
+              <i className="fas fa-sign-in-alt mr-2"></i> Login
+            </Link>
+          </div>
+        </div>
+      </nav>
 
       {/* Header Section */}
       <div className="bg-gradient-to-r from-blue-600 to-blue-800 py-12 text-center text-white shadow-md">
@@ -54,10 +55,16 @@ const Home = () => {
           <h1 className="text-4xl font-bold mb-4">Welcome to EventPro</h1>
           <p className="text-lg opacity-90 mb-6">Your premier destination for discovering and securing tickets to extraordinary events</p>
           <div className="flex justify-center space-x-4">
-            <button className="bg-white text-blue-700 px-6 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors duration-200 flex items-center">
+            <button 
+              onClick={() => navigate('/events')}
+              className="bg-white text-blue-700 px-6 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors duration-200 flex items-center"
+            >
               <i className="fas fa-search mr-2"></i> Explore Events
             </button>
-            <button className="bg-transparent border-2 border-white text-white px-6 py-2 rounded-md font-medium hover:bg-white hover:text-blue-700 transition-colors duration-200 flex items-center">
+            <button 
+              onClick={() => navigate('/createevent')}
+              className="bg-transparent border-2 border-white text-white px-6 py-2 rounded-md font-medium hover:bg-white hover:text-blue-700 transition-colors duration-200 flex items-center"
+            >
               <i className="fas fa-plus-circle mr-2"></i> Create Event
             </button>
           </div>
@@ -76,7 +83,10 @@ const Home = () => {
           <div className="absolute bottom-0 left-0 p-8 text-white">
             <h2 className="text-3xl font-bold mb-2">Upcoming Mega Concert</h2>
             <p className="text-lg mb-4">Experience the music event of the year</p>
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md font-medium transition-colors duration-200 flex items-center">
+            <button 
+              onClick={() => navigate('/events')}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md font-medium transition-colors duration-200 flex items-center"
+            >
               <i className="fas fa-ticket-alt mr-2"></i> Get Tickets Now
             </button>
           </div>
@@ -161,21 +171,21 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div className="p-6">
               <div className="bg-blue-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i className="fas fa-bolt text-2xl"></i>
+                <i className="fas fa-bolt text-2xl text-white"></i>
               </div>
               <h3 className="text-xl font-bold mb-2">Instant Booking</h3>
               <p className="text-gray-300">Secure your tickets in just a few clicks</p>
             </div>
             <div className="p-6">
               <div className="bg-blue-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i className="fas fa-shield-alt text-2xl"></i>
+                <i className="fas fa-lock text-2xl text-white"></i>
               </div>
               <h3 className="text-xl font-bold mb-2">Secure Payments</h3>
               <p className="text-gray-300">Your transactions are always protected</p>
             </div>
             <div className="p-6">
               <div className="bg-blue-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i className="fas fa-headset text-2xl"></i>
+                <i className="fas fa-headset text-2xl text-white"></i>
               </div>
               <h3 className="text-xl font-bold mb-2">24/7 Support</h3>
               <p className="text-gray-300">We're always here to help you</p>
